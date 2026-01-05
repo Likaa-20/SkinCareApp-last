@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
 import 'Product.dart';
+import 'Page2.dart';
 
 const String _baseURL = 'testingprojects.atwebpages.com';
 
@@ -39,6 +40,14 @@ class _Page4State extends State<Page4> {
     setState(() {
       _loading = false;
     });
+    if (text.trim() == "Order Placed Successfully") {
+      Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(
+            builder: (context) => Page2(clientName: widget.clientName)
+        ),
+            (route) => route.isFirst,
+      );
+    }
   }
 
   @override
