@@ -6,7 +6,15 @@ const String _baseURL = 'testingprojects.atwebpages.com';
 
 class Page3 extends StatefulWidget {
   final int skinId;
-  const Page3({Key? key, required this.skinId}) : super(key: key);
+  final String clientName;
+  final int clientId;
+
+  const Page3({
+    Key? key,
+    required this.skinId,
+    required this.clientName,
+    required this.clientId
+  }) : super(key: key);
 
   @override
   State<Page3> createState() => _Page3State();
@@ -133,7 +141,10 @@ class _Page3State extends State<Page3> {
           const SizedBox(height: 10),
           Expanded(
             child: _load
-                ? const ShowProducts()
+                ? ShowProducts(
+                clientName: widget.clientName,
+                clientId: widget.clientId
+            )
                 : const Center(
                 child: SizedBox(
                     width: 100,

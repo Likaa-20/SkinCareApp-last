@@ -125,7 +125,15 @@ void searchProduct(int Sid, String query, Function(bool success) update) async {
 
 class ShowProducts extends StatefulWidget {
 
-  const ShowProducts({ super.key});
+  final String clientName;
+  final int clientId;
+
+  const ShowProducts({
+  super.key,
+  required this.clientName,
+  required this.clientId
+  });
+
 
   @override
   State<ShowProducts> createState() =>_ShowProductsState();
@@ -271,8 +279,8 @@ class _ShowProductsState extends State<ShowProducts> {
                 context,
                 MaterialPageRoute(
                   builder: (context) => Page4(
-                    clientName: 'User',
-                    clientId: 1,
+                    clientName: widget.clientName,
+                    clientId: widget.clientId,
                     products: allSelectedProducts,
                     totalPrice: totalPrice,
                   ),

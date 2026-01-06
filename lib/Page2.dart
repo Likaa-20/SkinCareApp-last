@@ -7,7 +7,13 @@ import 'package:http/http.dart' as http;
 const String _baseURL = 'testingprojects.atwebpages.com';
 class Page2 extends StatefulWidget {
   final String clientName;
-  const Page2({Key? key, required this.clientName}) : super(key: key);
+  final int clientId;
+
+  const Page2({
+    Key? key,
+    required this.clientName,
+    required this.clientId
+  }) : super(key: key);
 
   @override
   State<Page2> createState() => _Page2State();
@@ -113,12 +119,17 @@ List<DropdownMenuItem<skinType>> buildItems() {
             const SizedBox(height: 40),
 
             ElevatedButton(
-              onPressed: () {Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                   builder: (context) => Page3(skinId: _selectedSkin!.Sid),
-                  ));
-
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Page3(
+                          skinId: _selectedSkin!.Sid,
+                          clientName: widget.clientName,
+                          clientId: widget.clientId
+                      ),
+                    )
+                );
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.pink.shade100,

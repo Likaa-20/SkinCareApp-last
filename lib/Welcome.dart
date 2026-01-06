@@ -52,7 +52,10 @@ class _WelcomeState extends State<Welcome> {
       Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => Page2(clientName: _controllerName.text)
+              builder: (context) => Page2(
+                  clientName: _controllerName.text,
+                  clientId: int.parse(_controllerID.text)
+              )
           )
       );
     }
@@ -453,10 +456,12 @@ void loginUser(BuildContext context, Function(String text) update, String name, 
       Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => Page2(clientName: '$name')
+              builder: (context) => Page2(
+                  clientName: name,
+                  clientId: int.parse(data['Cid'].toString())  // ADD THIS - get ID from server response
+              )
           )
       );
-
     } else {
       update(data['message']);
     }

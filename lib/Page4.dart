@@ -43,12 +43,16 @@ class _Page4State extends State<Page4> {
     if (text.trim() == "Order Placed Successfully") {
       Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(
-            builder: (context) => Page2(clientName: widget.clientName)
+            builder: (context) => Page2(
+                clientName: widget.clientName,
+                clientId: widget.clientId
+            )
         ),
             (route) => route.isFirst,
       );
     }
   }
+
 
   @override
   Widget build(BuildContext context) {
